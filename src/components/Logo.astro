@@ -1,0 +1,29 @@
+---
+// NAVER VENTURES wordmark — official brand asset.
+// Files live in /public/logo/:
+//   naver-ventures.png        (black, for light backgrounds)
+//   naver-ventures-white.png  (white, for dark backgrounds)
+interface Props {
+  tone?: 'dark' | 'light';
+  size?: string; // rendered logo height, e.g. '20px'
+  class?: string;
+}
+const { tone = 'dark', size = '18px', class: cls = '' } = Astro.props;
+const src = tone === 'light' ? '/logo/naver-ventures-white.png' : '/logo/naver-ventures.png';
+---
+
+<img
+  src={src}
+  alt="NAVER VENTURES"
+  class:list={['logo', cls]}
+  style={`height:${size};width:auto;`}
+  decoding="async"
+/>
+
+<style>
+  .logo {
+    display: inline-block;
+    width: auto;
+    user-select: none;
+  }
+</style>
