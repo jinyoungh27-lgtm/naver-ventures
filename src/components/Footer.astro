@@ -25,17 +25,18 @@ const year = new Date().getFullYear();
       </div>
     </div>
 
-    <div class="footer-cols">
-      <nav class="footer-col" aria-label="Footer">
-        <span class="footer-heading">Explore</span>
-        {nav.map((item) => <a href={item.href}>{item.label}</a>)}
-      </nav>
-      <div class="footer-col">
-        <span class="footer-heading">Connect</span>
-        <a href={`mailto:${site.email}`}>{site.email}</a>
-        <a href={site.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </div>
-    </div>
+    {
+      nav.length > 0 && (
+        <div class="footer-cols">
+          <nav class="footer-col" aria-label="Footer">
+            <span class="footer-heading">Explore</span>
+            {nav.map((item) => (
+              <a href={item.href}>{item.label}</a>
+            ))}
+          </nav>
+        </div>
+      )
+    }
   </div>
 
   <div class="wrap footer-bottom">
@@ -85,7 +86,7 @@ const year = new Date().getFullYear();
   }
   .footer-cols {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 2rem;
     align-content: start;
   }

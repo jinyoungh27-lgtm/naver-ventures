@@ -3,15 +3,18 @@ export const site = {
   name: 'NAVER Ventures',
   tagline: 'Backing the founders building what comes next.',
   description:
-    'NAVER Ventures is the corporate venture capital arm of NAVER Corp. We back the founders building AI, robotics, and fintech into the infrastructure of what comes next',
+    'NAVER Ventures is the corporate venture capital arm of NAVER Corp. We back the founders building AI, robotics, and fintech into the infrastructure of what comes next.',
   email: 'contact@naverventures.com',
   linkedin: 'https://www.linkedin.com/company/107492755',
 };
 
+// About / Team / Portfolio pages are temporarily hidden from the public site
+// (their files are prefixed with "_" in src/pages so Astro skips the routes).
+// Restore these entries — and rename the files back — to bring them online.
 export const nav = [
-  { label: 'About', href: '/about' },
-  { label: 'Team', href: '/team' },
-  { label: 'Portfolio', href: '/portfolio' },
+  // { label: 'About', href: '/about' },
+  // { label: 'Team', href: '/team' },
+  // { label: 'Portfolio', href: '/portfolio' },
 ];
 
 // Company description (NAVER Corp. positioning) — shared by the About and home pages.

@@ -22,8 +22,7 @@ const marqueeB = [...portfolio].reverse();
         {site.description}
       </p>
       <div class="hero-actions reveal" data-delay="240ms">
-        <a href="/about" class="btn btn--primary">About us</a>
-        <a href="/portfolio" class="btn btn--ghost">Portfolio</a>
+        <a href={`mailto:${site.email}`} class="btn btn--primary">Get in touch</a>
       </div>
     </div>
     <div class="hero-glow" aria-hidden="true"></div>
@@ -82,9 +81,6 @@ const marqueeB = [...portfolio].reverse();
       </div>
     </div>
 
-    <div class="wrap">
-      <a href="/portfolio" class="logos-link reveal">View full portfolio →</a>
-    </div>
   </section>
 
   <!-- APPROACH -->
@@ -92,12 +88,11 @@ const marqueeB = [...portfolio].reverse();
     <div class="wrap approach-grid">
       <div class="approach-inner">
         <p class="eyebrow reveal">Our approach</p>
-        <h2 class="h2 reveal">Building what's next, together</h2>
+        <h2 class="h2 reveal">More than a check</h2>
         <div class="approach-text reveal" data-delay="120ms">
           <p>
-            We back founders with more than capital — the technology,
-            partnerships, and reach to help them scale globally.
-            <a href="/about" class="inline-link">More about how we work →</a>
+            We bring technology, distribution, and partnerships, plus the reach
+            to scale across Asia and beyond.
           </p>
         </div>
       </div>
