@@ -21,12 +21,6 @@ export const portfolio: Company[] = [
     url: 'https://www.anthropic.com',
   },
   {
-    name: 'Perplexity',
-    description: 'The AI-powered answer engine for the web',
-    logo: '/logos/perplexity.png',
-    url: 'https://www.perplexity.ai',
-  },
-  {
     name: 'ElevenLabs',
     description: 'Lifelike AI voice and audio generation',
     logo: '/logos/elevenlabs.png',
