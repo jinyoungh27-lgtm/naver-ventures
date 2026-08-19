@@ -17,13 +17,6 @@ export type NewsItem = {
 
 export const news: NewsItem[] = [
   {
-    title: 'NaverVentures × TheVentures — Tech × Consumer Night',
-    outlet: 'NAVER Ventures',
-    date: '2026-08-04',
-    url: 'https://www.linkedin.com/posts/naver-ventures_naverventures-theventures-techxconsumer-activity-7491343392623423488-YkeO',
-    category: 'Events',
-  },
-  {
     title: 'We raised $100M to build Video Superintelligence',
     outlet: 'TwelveLabs',
     date: '2026-07-01',
