@@ -24,10 +24,10 @@ export const news: NewsItem[] = [
     category: 'Events',
   },
   {
-    title: 'Twelve Labs raises $100M Series B, co-led by NAVER Ventures and NEA',
-    outlet: 'Twelve Labs',
-    date: '2026-07-02',
-    url: 'https://www.linkedin.com/company/twelvelabs/posts/?feedView=all',
+    title: 'We raised $100M to build Video Superintelligence',
+    outlet: 'TwelveLabs',
+    date: '2026-07-01',
+    url: 'https://www.twelvelabs.io/blog/twelvelabs-series-b-100m',
     category: 'Investments',
   },
   {
@@ -60,10 +60,10 @@ export const news: NewsItem[] = [
     category: 'In the News',
   },
   {
-    title: "Namsun Kim on NAVER's investment strategy for North American AI startups",
+    title: "Artificial intelligence is a long-term secular trend: Naver's president of investments",
     outlet: 'CNBC',
     date: '2025-10-03',
-    url: 'https://versantmediahub.com/item/5b7c9cc7-e6b7-4862-8de9-663409c4b769',
+    url: 'https://www.cnbc.com/video/2025/10/03/artificial-intelligence-is-a-long-term-secular-trend-naver.html',
     category: 'In the News',
   },
   {
@@ -74,7 +74,7 @@ export const news: NewsItem[] = [
     category: 'In the News',
   },
   {
-    title: "Naver's Kim on Tie-Up Talks with Dunamu",
+    title: "Naver's Kim On Tie-Up Talks With Dunamu",
     outlet: 'Bloomberg',
     date: '2025-10-02',
     url: 'https://www.bloomberg.com/news/videos/2025-10-02/naver-s-kim-on-tie-up-talks-with-dunamu',
