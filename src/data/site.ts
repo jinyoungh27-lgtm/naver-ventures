@@ -8,19 +8,18 @@ export const site = {
   linkedin: 'https://www.linkedin.com/company/107492755',
 };
 
-// About / Team / Portfolio pages are temporarily hidden from the public site
-// (their files are prefixed with "_" in src/pages so Astro skips the routes).
-// Restore these entries — and rename the files back — to bring them online.
 export const nav = [
-  // { label: 'About', href: '/about' },
-  // { label: 'Team', href: '/team' },
-  // { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'News', href: '/news' },
 ];
 
-// Company description (NAVER Corp. positioning) — shared by the About and home pages.
+// NOTE: `company` and `glance` below are currently unused — the About page was
+// removed. Kept here so the copy and figures are not lost if About comes back.
+
+// Company description (NAVER Corp. positioning).
 export const company = {
   intro:
-    'NAVER Ventures is the Corporate Venture Capital (CVC) arm of NAVER Corp., Korea’s No. 1 search engine and a leading big tech company. Established to lead NAVER’s global venture investment initiatives, we invest in Artificial Intelligence, Robotics, Fintech, and future-defining technologies.',
+    'NAVER Ventures is the Corporate Venture Capital (CVC) arm of NAVER Corp., Korea’s No. 1 search engine and a leading big tech company.',
   partnership:
     'We build partnerships that empower visionary entrepreneurs to achieve global success while accelerating NAVER’s product roadmap through strategic synergy.',
 };

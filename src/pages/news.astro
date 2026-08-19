@@ -1,0 +1,202 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site';
+import { news } from '../data/news';
+
+const sorted = [...news].sort((a, b) => (a.date < b.date ? 1 : -1));
+
+// Group by year — the year sits in the left margin as a quiet chapter marker,
+// which gives the list structure without needing thumbnails or logos.
+const groups: { year: string; items: typeof sorted }[] = [];
+for (const item of sorted) {
+  const year = item.date.slice(0, 4);
+  const last = groups[groups.length - 1];
+  if (last && last.year === year) last.items.push(item);
+  else groups.push({ year, items: [item] });
+}
+
+const MONTHS = [
+  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+];
+const short = (iso: string) => {
+  const [, m, d] = iso.split('-').map(Number);
+  return `${MONTHS[(m || 1) - 1]} ${d}`;
+};
+---
+
+<Layout title="Newsroom" description={`Coverage, announcements, and recognition from ${site.name}.`}>
+  <section class="section page-hero">
+    <div class="wrap">
+      <!-- Same small eyebrow treatment the Portfolio page uses -->
+      <h1 class="eyebrow reveal">Newsroom</h1>
+    </div>
+  </section>
+
+  <section class="section news-section">
+    <div class="wrap">
+      {
+        groups.map((group) => (
+          <section class="yr">
+            <div class="yr-mark">
+              <span class="reveal">{group.year}</span>
+            </div>
+            <ol class="yr-items">
+              {group.items.map((item, i) => (
+                <li class="row reveal" data-delay={`${Math.min(i, 4) * 60}ms`}>
+                  <a href={item.url} target="_blank" rel="noopener noreferrer">
+                    <time class="row-date" datetime={item.date}>
+                      {short(item.date)}
+                    </time>
+                    <span class="row-main">
+                      <span class="row-title">{item.title}</span>
+                      <span class="row-outlet">{item.outlet}</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </section>
+        ))
+      }
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    padding-top: clamp(3rem, 7vw, 5rem);
+    padding-bottom: 0;
+  }
+  /* h1 inherits the global 800 weight; .eyebrow already resets size and
+     spacing, so only the display role needs neutralising here. */
+  .page-hero .eyebrow {
+    font-weight: 700;
+  }
+
+  .news-section {
+    padding-top: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .yr {
+    display: grid;
+    grid-template-columns: 8rem 1fr;
+    gap: 0 2.5rem;
+    align-items: start;
+  }
+  .yr + .yr {
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  /* Year follows you down its own group */
+  .yr-mark span {
+    position: sticky;
+    top: 6.5rem;
+    display: block;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: rgba(10, 14, 12, 0.18);
+    font-variant-numeric: tabular-nums;
+    padding-top: 2.1rem;
+  }
+
+  .yr-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+  }
+
+  .row {
+    border-top: 1px solid var(--line);
+  }
+  .yr:first-of-type .row:first-child {
+    border-top-color: rgba(10, 14, 12, 0.24);
+  }
+  .row:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .row a {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    gap: 2rem;
+    align-items: baseline;
+    padding-block: clamp(1.6rem, 2.6vw, 2.2rem);
+    transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .row a:hover {
+    transform: translateX(6px);
+  }
+
+  .row-date {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    transition: color 0.25s ease;
+  }
+
+  .row-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    min-width: 0;
+  }
+
+  .row-title {
+    font-size: clamp(1.2rem, 2vw, 1.75rem);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.022em;
+    text-wrap: pretty;
+  }
+
+  .row-outlet {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: color 0.25s ease;
+  }
+  .row a:hover .row-outlet,
+  .row a:hover .row-date {
+    color: var(--ink);
+  }
+
+  @media (max-width: 860px) {
+    .yr {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .yr-mark span {
+      position: static;
+      padding-top: 0;
+      margin-bottom: 0.9rem;
+      font-size: 1.6rem;
+    }
+    .row a {
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+      padding-block: 1.5rem;
+    }
+    .row-main {
+      gap: 0.65rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .row a:hover {
+      transform: none;
+    }
+    .row-title {
+      transition: none;
+    }
+  }
+</style>
