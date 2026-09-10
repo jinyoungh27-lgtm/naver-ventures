@@ -62,4 +62,10 @@ export const portfolio: Company[] = [
     logo: '/logos/suno.png',
     url: 'https://suno.com',
   },
+  {
+    name: 'Positron AI',
+    description: 'Chips for AI acceleration',
+    logo: '/logos/positron.png',
+    url: 'https://www.positron.ai',
+  },
 ];
