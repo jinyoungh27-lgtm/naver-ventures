@@ -30,13 +30,13 @@ export const team: Member[] = [
   },
   {
     name: 'Tony Kim',
-    role: 'Principal Investor',
+    role: 'Principal',
     photo: '/team/tony-kim.jpg',
     linkedin: 'https://www.linkedin.com/in/tony-s-kim-118709b2/',
   },
   {
     name: 'Konhyung Kim',
-    role: 'Principal Investor',
+    role: 'Principal',
     photo: '/team/konhyung-kim.jpg',
     linkedin: 'https://www.linkedin.com/in/konhyung-kim/',
   },
