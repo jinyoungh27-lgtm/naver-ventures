@@ -17,6 +17,26 @@ export type NewsItem = {
 
 export const news: NewsItem[] = [
   {
+    // Paywalled. Kept deliberately for the masthead; the same-day free reads are
+    // Quartz (finance.yahoo.com/technology/ai/articles/positron-ai-raises-875-million-140907288.html)
+    // and Positron's own release, if we ever want to swap.
+    title: 'Positron Valued at $5 Billion in New Funding as CPU Demand Surges',
+    outlet: 'The Wall Street Journal',
+    date: '2026-09-10',
+    url: 'https://www.wsj.com/tech/ai/positron-valued-at-5-billion-in-new-funding-as-cpu-demand-surges-76dde819',
+    category: 'Investments',
+  },
+  {
+    // Variety had the exclusive on Aug 27, ahead of the Sep 2 press release at
+    // en.prnasia.com/releases/apac/naver-ventures-invests-in-baobab-studios-bridging-east-west-transmedia-546113.shtml
+    title:
+      "Emmy-Winning Baobab Studios Lands Naver Ventures Investment, Sets 'Shine' as Flagship Title",
+    outlet: 'Variety',
+    date: '2026-08-27',
+    url: 'https://variety.com/2026/tv/news/baobab-studios-naver-ventures-investment-shine-1236844847/',
+    category: 'Investments',
+  },
+  {
     title: 'We raised $100M to build Video Superintelligence',
     outlet: 'TwelveLabs',
     date: '2026-07-01',
@@ -24,10 +44,10 @@ export const news: NewsItem[] = [
     category: 'Investments',
   },
   {
-    title: 'Yong-Jung Park named to the GCV Powerlist 2026',
+    title: 'Powerlist 2026: Yong-Jung Park, Naver Ventures',
     outlet: 'Global Corporate Venturing',
-    date: '2026-06-24',
-    url: 'https://globalventuring.com/intelligence/2026-gcv-powerlist',
+    date: '2026-06-22',
+    url: 'https://globalventuring.com/people/powerlist-2026-yong-jung-park-naver-ventures/',
     category: 'Recognition',
   },
   {

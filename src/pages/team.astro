@@ -1,0 +1,196 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site';
+import { team } from '../data/team';
+
+// Initials stand in for the headshot until a photo is dropped into /public/team/.
+const initials = (name: string) =>
+  name
+    .split(' ')
+    .map((n) => n[0])
+    .slice(0, 2)
+    .join('');
+---
+
+<Layout title="Team" description={`Meet the team behind ${site.name}.`}>
+  <section class="section page-hero">
+    <div class="wrap">
+      <p class="eyebrow reveal">Team</p>
+      <h1 class="display reveal" data-delay="80ms">
+        Meet the {site.name} team
+      </h1>
+    </div>
+  </section>
+
+  <section class="section team-section">
+    <div class="wrap">
+      <ul class="team-grid">
+        {
+          team.map((m, i) => {
+            // The whole card is the LinkedIn link; members without one render
+            // as a plain, non-interactive card rather than a dead anchor.
+            const Tag = m.linkedin ? 'a' : 'div';
+            return (
+              <li class="reveal" data-delay={`${(i % 4) * 70}ms`}>
+                <Tag
+                  class:list={['member', { 'is-link': !!m.linkedin }]}
+                  href={m.linkedin}
+                  target={m.linkedin ? '_blank' : undefined}
+                  rel={m.linkedin ? 'noopener noreferrer' : undefined}
+                  aria-label={m.linkedin ? `${m.name} on LinkedIn` : undefined}
+                >
+                  <span class="member-photo">
+                    {m.photo ? (
+                      <img src={m.photo} alt={m.name} loading="lazy" decoding="async" />
+                    ) : (
+                      <span class="member-initials" aria-hidden="true">
+                        {initials(m.name)}
+                      </span>
+                    )}
+                    {m.linkedin && (
+                      <span class="member-badge" aria-hidden="true">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
+                        </svg>
+                      </span>
+                    )}
+                  </span>
+                  <span class="member-name">{m.name}</span>
+                  <span class="member-role">{m.role}</span>
+                </Tag>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .page-hero {
+    padding-top: clamp(3.5rem, 8vw, 6rem);
+    padding-bottom: clamp(2rem, 5vw, 3rem);
+  }
+  /* Smaller than the global display step so the line holds together: at 5.5rem
+     the heading spills and strands "team" alone on a second line, and the only
+     balanced break splits "NAVER Ventures" across lines. */
+  .page-hero .display {
+    margin-top: 1rem;
+    font-size: clamp(2rem, 5.2vw, 4.25rem);
+    text-wrap: balance;
+  }
+  /* The hero already carries bottom padding; the section default stacks another
+     8rem on top of it and leaves a dead band above the grid. */
+  .team-section {
+    padding-top: clamp(1rem, 3vw, 2.5rem);
+  }
+
+  /* Four across, stepped down by breakpoint. Fixed counts rather than auto-fill
+     so the track width is predictable: inside the 1200px container this puts
+     each headshot at ~238px, the size we want it read at. */
+  .team-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .member {
+    display: block;
+  }
+  .member-photo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 3 / 4;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: linear-gradient(135deg, #e9f9f0, #d3f3e1);
+  }
+  .member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .member-initials {
+    font-size: 2.6rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--green-dark);
+  }
+
+  /* LinkedIn chip fades up on hover so the card stays a clean headshot at rest */
+  .member-badge {
+    position: absolute;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: #fff;
+    color: var(--ink);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .is-link:hover .member-badge,
+  .is-link:focus-visible .member-badge {
+    opacity: 1;
+    transform: none;
+  }
+  .is-link:hover .member-photo img {
+    transform: scale(1.04);
+  }
+
+  .member-name {
+    display: block;
+    margin-top: 1rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .member-role {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  .is-link:hover .member-name {
+    color: var(--green-dark);
+  }
+
+  @media (max-width: 820px) {
+    .team-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (max-width: 520px) {
+    .team-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .member-photo img,
+    .member-badge {
+      transition: none;
+    }
+    .is-link:hover .member-photo img {
+      transform: none;
+    }
+    .member-badge {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

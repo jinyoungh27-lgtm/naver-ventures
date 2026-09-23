@@ -68,4 +68,10 @@ export const portfolio: Company[] = [
     logo: '/logos/positron.png',
     url: 'https://www.positron.ai',
   },
+  {
+    name: 'Instinct',
+    description: 'Personal AI assistant',
+    logo: '/logos/instinct.png',
+    url: 'https://instinct.com',
+  },
 ];

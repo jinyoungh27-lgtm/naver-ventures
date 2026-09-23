@@ -1,15 +1,18 @@
 // Central site configuration — edit links, contact, and nav here.
 export const site = {
   name: 'NAVER Ventures',
-  tagline: 'Backing the founders building what comes next.',
+  tagline: 'Backing the founders building the future.',
   description:
-    'NAVER Ventures is the corporate venture capital arm of NAVER Corp. We back the founders building AI, robotics, and fintech into the infrastructure of what comes next.',
+    'NAVER Ventures is the corporate venture capital arm of NAVER Corp. We back exceptional founders building category-defining technology companies that reshape the world.',
   email: 'contact@naverventures.com',
   linkedin: 'https://www.linkedin.com/company/107492755',
 };
 
+// Header/footer navigation. "Contact" is not listed here — it renders as the
+// mailto CTA at the end of the nav, so the bar reads Portfolio | Team | News | Contact.
 export const nav = [
   { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Team', href: '/team' },
   { label: 'News', href: '/news' },
 ];
 
