@@ -35,12 +35,6 @@ export const team: Member[] = [
     linkedin: 'https://www.linkedin.com/in/tony-s-kim-118709b2/',
   },
   {
-    name: 'Konhyung Kim',
-    role: 'Principal',
-    photo: '/team/konhyung-kim.jpg',
-    linkedin: 'https://www.linkedin.com/in/konhyung-kim/',
-  },
-  {
     name: 'Jinyoung Hwang',
     role: 'Associate',
     photo: '/team/jinyoung-hwang.jpg',
