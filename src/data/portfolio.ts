@@ -1,4 +1,4 @@
-// Portfolio companies NAVER Ventures backs.
+// Portfolio companies NAVER Ventures backs. Exported A-Z; see the sort below.
 // `logo` points to a file in /public/logos/. `description` is a short one-liner.
 export type Company = {
   name: string;
@@ -7,7 +7,7 @@ export type Company = {
   url: string;
 };
 
-export const portfolio: Company[] = [
+const companies: Company[] = [
   {
     name: 'Twelve Labs',
     description: 'Video understanding foundation models',
@@ -75,3 +75,9 @@ export const portfolio: Company[] = [
     url: 'https://instinct.com',
   },
 ];
+
+// Rendered A-Z, so the order above does not matter — a new company can be
+// appended to the list and it lands in the right place on its own.
+export const portfolio: Company[] = [...companies].sort((a, b) =>
+  a.name.localeCompare(b.name, 'en')
+);

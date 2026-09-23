@@ -27,6 +27,15 @@ export const news: NewsItem[] = [
     category: 'Investments',
   },
   {
+    // Our own investment thesis, published the same day as the WSJ story above.
+    title:
+      'Memory Capacity in the Multi-Silicon Era: Why We Invested in Positron AI',
+    outlet: 'NAVER Ventures',
+    date: '2026-09-10',
+    url: 'https://tonyskim.substack.com/p/memory-capacity-in-the-multi-silicon',
+    category: 'Investments',
+  },
+  {
     // Variety had the exclusive on Aug 27, ahead of the Sep 2 press release at
     // en.prnasia.com/releases/apac/naver-ventures-invests-in-baobab-studios-bridging-east-west-transmedia-546113.shtml
     title:
