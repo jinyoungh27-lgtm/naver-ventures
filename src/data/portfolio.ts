@@ -74,6 +74,18 @@ const companies: Company[] = [
     logo: '/logos/instinct.png',
     url: 'https://instinct.com',
   },
+  {
+    name: 'Furiosa AI',
+    description: 'Power-efficient AI inference chips for the enterprise',
+    logo: '/logos/furiosaai.png',
+    url: 'https://www.furiosa.ai',
+  },
+  {
+    name: 'Path Robotics',
+    description: 'AI-driven robotic welding for manufacturing',
+    logo: '/logos/pathrobotics.png',
+    url: 'https://www.path-robotics.com',
+  },
 ];
 
 // Rendered A-Z, so the order above does not matter — a new company can be

@@ -17,6 +17,22 @@ export type NewsItem = {
 
 export const news: NewsItem[] = [
   {
+    title:
+      'Physical AI for the Physical Build-Out. Why We Invested in Path Robotics',
+    outlet: 'NAVER Ventures',
+    date: '2026-11-10',
+    url: 'https://tonyskim.substack.com/p/physical-ai-for-the-physical-build',
+    category: 'Investments',
+  },
+  {
+    title:
+      'Enterprise Inference in the Multi-Silicon Era: Why We Invested in FuriosaAI',
+    outlet: 'NAVER Ventures',
+    date: '2026-10-29',
+    url: 'https://tonyskim.substack.com/p/enterprise-inference-in-the-multi',
+    category: 'Investments',
+  },
+  {
     // Paywalled. Kept deliberately for the masthead; the same-day free reads are
     // Quartz (finance.yahoo.com/technology/ai/articles/positron-ai-raises-875-million-140907288.html)
     // and Positron's own release, if we ever want to swap.
